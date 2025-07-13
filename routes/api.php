@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\EducationController;
+use App\Http\Controllers\Api\ExperienceController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SkillController;
 use Illuminate\Http\Request;
@@ -15,3 +16,4 @@ Route::apiResource('projects', ProjectController::class);
 Route::apiResource('educations', EducationController::class);
 Route::apiResource('skills', SkillController::class);
 Route::apiResource('certificates', CertificateController::class);
+Route::apiResource('experiences', ExperienceController::class);
