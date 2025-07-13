@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SkillController;
@@ -13,3 +14,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::apiResource('projects', ProjectController::class);
 Route::apiResource('educations', EducationController::class);
 Route::apiResource('skills', SkillController::class);
+Route::apiResource('certificates', CertificateController::class);
