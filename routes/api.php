@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CertificateController;
+use App\Http\Controllers\Api\ContactMessageController;
 use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\ExperienceController;
 use App\Http\Controllers\Api\ProjectController;
@@ -17,3 +18,4 @@ Route::apiResource('educations', EducationController::class);
 Route::apiResource('skills', SkillController::class);
 Route::apiResource('certificates', CertificateController::class);
 Route::apiResource('experiences', ExperienceController::class);
+ROute::apiResource('contact-messages', ContactMessageController::class);
