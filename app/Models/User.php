@@ -22,6 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'bio',
+        'address',
+        'phone_number',
+        'github_url',
+        'linkedin_url',
+        'instagram_url',
+        'website_url',
+        'image'
     ];
 
     /**
@@ -47,8 +55,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
 }

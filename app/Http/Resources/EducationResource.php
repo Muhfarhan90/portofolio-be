@@ -15,18 +15,18 @@ class EducationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'institution' => $this->institution,
-            'degree' => $this->degree,
-            'major' => $this->major,
-            'start_year' => $this->start_year,
-            'end_year' => $this->end_year,
-            'location' => $this->location,
-            'gpa' => $this->gpa,
-            'description' => $this->description,
-            'is_current' => $this->is_current,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'id' => $this->resource->id,
+            'institution' => $this->resource->institution,
+            'degree' => $this->resource->degree,
+            'major' => $this->resource->major,
+            'start_year' => $this->resource->start_year,
+            'end_year' => $this->resource->end_year,
+            'location' => $this->resource->location,
+            'gpa' => $this->resource->gpa,
+            'description' => $this->resource->description,
+            'is_current' => $this->resource->is_current,
+            'created_at' => $this->resource->created_at,
+            'updated_at' => $this->resource->updated_at,
         ];
     }
 }

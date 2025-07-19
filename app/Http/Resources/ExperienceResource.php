@@ -15,14 +15,14 @@ class ExperienceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'company_name' => $this->company_name,
-            'role' => $this->role,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
-            'description' => $this->description,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'id' => $this->resource->id,
+            'company_name' => $this->resource->company_name,
+            'role' => $this->resource->role,
+            'start_date' => $this->resource->start_date,
+            'end_date' => $this->resource->end_date,
+            'description' => $this->resource->description,
+            'created_at' => $this->resource->created_at,
+            'updated_at' => $this->resource->updated_at,
         ];
     }
 }

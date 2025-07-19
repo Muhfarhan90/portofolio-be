@@ -15,12 +15,12 @@ class SkillResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'category' => $this->category,
-            'level' => $this->level,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
+            'level' => $this->resource->level,
+            'category' => $this->resource->category,
+            'created_at' => $this->resource->created_at,
+            'updated_at' => $this->resource->updated_at,
         ];
     }
 }
