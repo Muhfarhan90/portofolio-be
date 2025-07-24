@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
-            $table->string('tech_stack');
+            $table->string('tech_stack')->nullable();
             $table->string('repo_url')->nullable();
             $table->string('live_url')->nullable();
             $table->string('image')->nullable();

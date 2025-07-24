@@ -37,7 +37,21 @@ class AuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['message' => 'Login successful', 'token' => $token]);
+        return response()->json([
+            'message' => 'Login successful',
+            'data' => [
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email
+                ],
+                'token' => [
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                    'expires_in' => 3600
+                ]
+            ]
+        ]);
     }
 
     public function logout(Request $request)

@@ -7,6 +7,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class ProjectController extends Controller
@@ -20,6 +21,9 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $validated = $request->validated();
+
+        // Auto generate slug from title
+        $validated['slug'] = Str::slug($validated['title']);
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
@@ -37,6 +41,9 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, Project $project)
     {
         $validated = $request->validated();
+
+        // Auto regenerate slug when title is updated
+        $validated['slug'] = Str::slug($validated['title']);
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');

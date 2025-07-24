@@ -25,9 +25,8 @@ class ProjectRequest extends FormRequest
 
         return [
             'title'       => 'required|string|max:255',
-            'slug'        => ['required', 'string', 'max:255', 'unique:projects,slug' . ($projectId ? ',' . $projectId : '')],
             'description' => 'required|string',
-            'tech_stack'  => 'required|string|max:255',
+            'tech_stack'  => 'nullable|string|max:255',
             'repo_url'    => 'nullable|url',
             'live_url'    => 'nullable|url',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
