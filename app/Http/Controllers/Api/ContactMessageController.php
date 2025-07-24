@@ -12,8 +12,17 @@ class ContactMessageController extends Controller
 {
     public function index(Request $request)
     {
-        $contactMessages = ContactMessage::all();
-        return ContactMessageResource::collection($contactMessages);
+        // Fetch all contact messages, optionally with search functionality
+        $query = ContactMessage::query();
+        if ($search = $request->query('search')) {
+            $query->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('message', 'like', "%{$search}%");
+        }
+
+        return ContactMessageResource::collection(
+            $query->latest()->paginate(10)
+        );
     }
 
     public function store(ContactMessageRequest $request)

@@ -12,11 +12,18 @@ class ExperienceController extends Controller
 {
     public function index(Request $request)
     {
-        $experiences = Experience::latest()->paginate(10);
-        return ExperienceResource::collection($experiences);
+        $query = Experience::query();
+        if ($search = $request->query('search')) {
+            $query->where('company_name', 'like', "%{$search}%")
+                ->orWhere('role', 'like', "%{$search}%");
+        }
+        return ExperienceResource::collection(
+            $query->latest()->paginate(10)
+        );
     }
 
-    public function store(ExperienceRequest $request) {
+    public function store(ExperienceRequest $request)
+    {
         $validated = $request->validated();
 
         $experience = Experience::create($validated);

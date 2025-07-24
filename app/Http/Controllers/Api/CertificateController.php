@@ -12,8 +12,14 @@ class CertificateController extends Controller
 {
     public function index(Request $request)
     {
-        $certificates = Certificate::latest()->paginate(10);
-        return CertificateResource::collection($certificates);
+        $query = Certificate::query();
+        if ($search = $request->query('search')) {
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('issuer', 'like', "%{$search}%");
+        }
+        return CertificateResource::collection(
+            $query->latest()->paginate(10)
+        );
     }
 
     public function store(CertificateRequest $request)

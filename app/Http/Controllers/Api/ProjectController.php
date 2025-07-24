@@ -12,10 +12,17 @@ use Illuminate\Validation\ValidationException;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::latest()->paginate(10);
-        return ProjectResource::collection($projects);
+        $query = Project::query();
+
+        if ($search = $request->query('search')) {
+            $query->where('title', 'like', "%{$search}%");
+        }
+
+        return ProjectResource::collection(
+            $query->latest()->paginate(10)
+        );
     }
 
     public function store(ProjectRequest $request)

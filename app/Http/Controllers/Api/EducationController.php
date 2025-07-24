@@ -12,8 +12,15 @@ class EducationController extends Controller
 {
     public function index(Request $request)
     {
-        $educations = Education::latest()->paginate(10);
-        return EducationResource::collection($educations);
+        $query = Education::query();
+        if ($search = $request->query('search')) {
+            $query->where('institution', 'like', "%{$search}%")
+                ->orWhere('degree', 'like', "%{$search}%");
+        }
+
+        return EducationResource::collection(
+            $query->latest()->paginate(10)
+        );
     }
 
     public function store(EducationRequest $request)
